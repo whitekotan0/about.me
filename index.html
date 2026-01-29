@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whitekotan0 - ML & Infrastructure Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #faf9f6;
+            --bg-secondary: #f5f3ed;
+            --text-primary: #2c2c2c;
+            --text-secondary: #6b6b6b;
+            --accent: #d4a5a5;
+            --accent-light: #e8d4d4;
+            --accent-dark: #b88888;
+            --card-bg: #ffffff;
+            --shadow: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 20px 40px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .location {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            gap: 8px;
+            padding: 0 20px;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 2px solid var(--accent-light);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .nav-btn:hover,
+        .nav-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            display: none;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+
+        .card h2 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--accent-dark);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--bg-secondary);
+        }
+
+        .card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Project Links */
+        .project-link {
+            display: inline-block;
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 2px solid var(--accent-light);
+            transition: all 0.2s;
+            margin-right: 12px;
+            margin-top: 8px;
+        }
+
+        .project-link:hover {
+            border-color: var(--accent);
+        }
+
+        /* Blog Posts */
+        .blog-post {
+            padding: 20px;
+            border-left: 3px solid var(--accent-light);
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .blog-post:hover {
+            border-left-color: var(--accent);
+            background: var(--bg-secondary);
+        }
+
+        .blog-date {
+            font-size: 0.85rem;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .blog-excerpt {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tag {
+            padding: 4px 12px;
+            background: var(--accent-light);
+            color: var(--text-primary);
+            border-radius: 16px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .social-link {
+            color: var(--accent-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .card {
+                padding: 20px;
+            }
+
+            nav {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>whitekotan0</h1>
+        <p class="subtitle">"If you don't understand something, it's a reason to dig deeper."</p>
+        <div class="location">
+            <span>📍</span>
+            <span>Ukraine • KNU Student</span>
+        </div>
+    </header>
+
+    <nav class="container">
+        <button class="nav-btn active" onclick="switchTab('about')">About</button>
+        <button class="nav-btn" onclick="switchTab('projects')">Projects</button>
+        <button class="nav-btn" onclick="switchTab('research')">Research</button>
+        <button class="nav-btn" onclick="switchTab('articles')">Articles</button>
+    </nav>
+
+    <div class="container">
+        <!-- About Section -->
+        <section id="about" class="active">
+            <div class="card">
+                <h2>About Me</h2>
+                <p>Computer Science student at Taras Shevchenko National University of Kyiv (KNU), passionate about pushing the boundaries of machine learning and infrastructure engineering.</p>
+                <p>I focus on making AI more transparent and efficient, working on tools that help researchers understand how neural networks think and make decisions.</p>
+                <p>Active user of neural networks for development and research. Deeply interested in understanding their internal architecture, training algorithms, and optimization techniques.</p>
+            </div>
+
+            <div class="card">
+                <h3>Interests & Focus Areas</h3>
+                <ul>
+                    <li>🔬 Research & Development in ML</li>
+                    <li>🧠 Machine Learning & Deep Learning</li>
+                    <li>🤖 Neural Network Architecture & Optimization</li>
+                    <li>⚡ Low-Level Programming & Optimization</li>
+                    <li>☁️ Cloud Infrastructure & DevOps</li>
+                    <li>🔍 AI Interpretability & Explainability</li>
+                    <li>💻 AI-Assisted Development (Vibe Coding)</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="card">
+                <h2>Current Projects</h2>
+                
+                <h3>Spectra.ai</h3>
+                <p>A Python library for analyzing internal representations of Large Language Models using the Logit Lens technique. Spectra helps researchers understand how LLMs process information at each layer, providing deep insights into model behavior and decision-making processes.</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">AI Research</span>
+                    <span class="tag">Interpretability</span>
+                </div>
+                <div style="margin-top: 16px;">
+                    <a href="https://github.com/whitekotan0/spectra.ai" class="project-link" target="_blank">GitHub →</a>
+                    <a href="https://whitekotan0.github.io/glassboxai.landing/" class="project-link" target="_blank">Landing Page →</a>
+                </div>
+
+                <h3 style="margin-top: 32px;">Key Features</h3>
+                <ul>
+                    <li>Layer-by-layer prediction analysis for any transformer model</li>
+                    <li>Interactive HTML visualizations with attention maps</li>
+                    <li>Automatic quantization for memory optimization</li>
+                    <li>Support for Llama, Qwen, Mistral, and more architectures</li>
+                    <li>Batch processing and streaming analysis capabilities</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Technical Stack</h3>
+                <p>Technologies and tools I work with:</p>
+                <div class="tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">PyTorch</span>
+                    <span class="tag">Transformers</span>
+                    <span class="tag">CUDA</span>
+                    <span class="tag">Docker</span>
+                    <span class="tag">Git</span>
+                    <span class="tag">Linux</span>
+                    <span class="tag">Cloud Infrastructure</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Section -->
+        <section id="research">
+            <div class="card">
+                <h2>Research Interests</h2>
+                <p>My research focuses on making AI systems more transparent and reliable. I'm particularly interested in understanding how neural networks make decisions and how we can improve their interpretability.</p>
+            </div>
+
+            <div class="card">
+                <h3>Current Research Areas</h3>
+                <ul>
+                    <li><strong>AI Interpretability:</strong> Developing methods to visualize and understand neural network decision-making processes</li>
+                    <li><strong>Model Efficiency:</strong> Optimizing LLM performance through quantization and architectural improvements</li>
+                    <li><strong>Mechanistic Interpretability:</strong> Understanding the internal representations and computational mechanisms of transformer models</li>
+                    <li><strong>ML Systems:</strong> Building scalable infrastructure for ML research and deployment</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Technical Interests</h3>
+                <p>Beyond ML research, I'm passionate about:</p>
+                <ul>
+                    <li>Low-level programming and performance optimization</li>
+                    <li>Distributed systems and cloud infrastructure design</li>
+                    <li>DevOps practices and CI/CD pipelines</li>
+                    <li>Open-source software development</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Articles Section -->
+        <section id="articles">
+            <div class="card">
+                <h2>Articles & Insights</h2>
+                <p>Coming soon... This section will feature my thoughts on ML research, technical deep-dives, and project updates.</p>
+            </div>
+
+            <div class="card">
+                <div class="blog-post">
+                    <div class="blog-date">Placeholder • Coming Soon</div>
+                    <div class="blog-title">Understanding Logit Lens: A Visual Guide</div>
+                    <p class="blog-excerpt">An in-depth exploration of how the Logit Lens technique helps us peek inside transformer models and understand their layer-by-layer decision-making process.</p>
+                </div>
+
+                <div class="blog-post">
+                    <div class="blog-date">Placeholder • Coming Soon</div>
+                    <div class="blog-title">Building Spectra.ai: Lessons Learned</div>
+                    <p class="blog-excerpt">The journey of creating an open-source tool for AI interpretability, from initial concept to working prototype.</p>
+                </div>
+
+                <div class="blog-post">
+                    <div class="blog-date">Placeholder • Coming Soon</div>
+                    <div class="blog-title">Quantization Techniques for LLMs</div>
+                    <p class="blog-excerpt">A practical guide to reducing memory footprint of large language models without sacrificing performance.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://github.com/whitekotan0" class="social-link" target="_blank">GitHub</a>
+            <a href="mailto:your.email@example.com" class="social-link">Email</a>
+        </div>
+        <p>© 2026 whitekotan0 • Built with passion for AI research</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // Hide all sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected section
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
